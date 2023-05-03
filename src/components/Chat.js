@@ -12,6 +12,7 @@ const Chat = ({ messages }) => {
     const [{ user }, dispatch] = useStateValue();
     const [reactions, setReactions] = useState({});
     const [selectedEmoji, setSelectedEmoji] = useState("");
+    const [selectedMessage, setSelectedMessage] = useState(null);
 
     const sendMessage = async (e) => {
         e.preventDefault();
@@ -71,7 +72,7 @@ const Chat = ({ messages }) => {
             </div>
             <div className="chat_body">
                 {messages.map(message => (
-                    <div key={message._id} className={`chat_message ${message.name == user.displayName && 'chat_receiver'}`}>
+                    <div key={message._id} className={`chat_message ${message.name == user.displayName && 'chat_receiver'} ${message._id === selectedMessage ? 'chat_selected' : ''}`} onClick={() => setSelectedMessage(message._id)}>
                         <span className="chat_name">{message.name}</span> {message.message}
                         <span className="chat_timestamp">{message.timestamp}</span>
                         <div className="chat_reactions">
@@ -82,20 +83,15 @@ const Chat = ({ messages }) => {
                     </div>
                 ))}
             </div>
-            <div className="chat_footer">
-                <InsertEmoticon />
-                <form>
-                    <input
-                        value={input}
-                        onChange = {e => setInput(e.target.value)}
-                    placeholder ="Type a message"
-                    type="text"
-                />
-                <button onClick ={sendMessage} type ="submit"> Send a Message</button>
+            <InsertEmoticon className="chat_emojiPickerIcon" onClick={() => console.log("Emoji picker clicked")} />
+            <form className="chat_footer">
+                <InsertEmoticon className="chat_insertEmoticonIcon" onClick={() => console.log("Emoji picker clicked")} />
+                <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type a message" type="text" />
+                <button onClick={sendMessage} type="submit">Send a message</button>
+                <MicIcon />
             </form>
-            <MicIcon/>
         </div>
-        </div>
-    )
-}
-export default Chat
+    );
+};
+
+export default Chat;
