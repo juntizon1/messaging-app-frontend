@@ -23,7 +23,7 @@ const Login = () => {
             <div className ="login_container">
                 <img src = "logo512.png" alt="whatsapp" />
                 <div className = "login_text">
-                    <h1>Sign in to Messaging App</h1>
+                    <h1>Sign in to Messaging Apples</h1>
                 </div>
                 <Button onClick = {signIn} > Sign in with Google</Button>
             </div>
