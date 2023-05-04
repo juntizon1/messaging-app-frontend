@@ -33,14 +33,22 @@
     position:relative;
     font-size:16px;
     padding:10px;
-    width:fit-content;
-    border-radius:10px;
-    width:fit-content;
     border-radius:10px;
     background-color: dimgrey;
     margin-bottom:30px;
     color:white;
+    width:fit-content;
 }
+.chat_message:hover {
+    background-color: #7289DA;
+    color: white;
+    cursor: pointer;
+}
+
+.chat_message:hover .add-icon {
+    display: block;
+}
+
 .chat_receiver{
     margin-left:auto;
     background-color:#1982FC;
@@ -80,4 +88,47 @@
 .chat_footer > .MuiSvgIcon-root{
     padding:10px;
     color:gray;
+}
+.chat_message_selected {
+    background-color: #ebebeb;
+    padding: 10px;
+    margin: 10px 0;
+    position: relative;
+}
+.chat_selected_emoji_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    right: 0;
+    height: 25px;
+    background-color: #F0F0F0;
+    border-radius: 25px;
+    padding: 0 10px;
+}
+.add-icon {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    display: none;
+    width: 20px;
+    height: 20px;
+    background-color: #7289DA;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.chat_message_popup {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
